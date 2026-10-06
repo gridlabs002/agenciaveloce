@@ -1,0 +1,3110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js-active');</script>
+  <meta name="description" content="Marketing e vendas para o setor automotivo. Conheça a Veloce e faça o diagnóstico do seu marketing.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veloce — Marketing e Vendas para o setor automotivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #32D9D9;
+      --cyan-dim: #27A9A9;
+      --blue: var(--cyan);
+      --ice: var(--cyan);
+      --amber: var(--cyan);
+      --black: #050607;
+      --dark: #0b0d0f;
+      --border: rgba(50, 217, 217, 0.16);
+      --glass: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.09);
+      --text: #eaeef0;
+      --muted: #8b9498;
+      --heading: #fff;
+      --accent-text: var(--cyan);
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    /* Seções claras — variam o fundo escuro contínuo, mesma identidade cyan */
+    #veloce-lp section.section-light {
+      background: #F1F5F5;
+      --text: #2b3438;
+      --muted: #5b6568;
+      --heading: #0d1418;
+      --accent-text: var(--heading);
+      --glass: rgba(10, 20, 20, 0.035);
+      --glass-border: rgba(10, 20, 20, 0.12);
+    }
+
+    #veloce-lp section.section-light.sec-border {
+      border-top-color: rgba(10, 20, 20, 0.08);
+    }
+
+    #veloce-lp section.section-light .section-title em,
+    #veloce-lp section.section-light .section-title em.warn,
+    #veloce-lp section.section-light .section-title em.blue {
+      color: var(--heading);
+    }
+
+    /* meia-luz lateral nas seções escuras, no mesmo espírito do hero */
+    #veloce-lp section:not(.section-light):not(.hero) {
+      position: relative;
+      background:
+        radial-gradient(70% 90% at 0% 45%, rgba(50, 217, 217, 0.12), transparent 62%),
+        radial-gradient(140% 120% at 0% 45%, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      margin: 0;
+    }
+
+    /* Remove padding e título gerados pelo Autódromo no wrapper do bloco */
+    section.code-block-section {
+      padding: 0 !important;
+    }
+
+    section.code-block-section>h2 {
+      display: none !important;
+    }
+
+    #veloce-lp * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #veloce-lp {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    #veloce-lp::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(60vw 40vh at 80% 8%, rgba(50, 217, 217, 0.10), transparent 60%),
+        radial-gradient(55vw 45vh at 15% 38%, rgba(50, 217, 217, 0.10), transparent 60%),
+        radial-gradient(60vw 40vh at 85% 66%, rgba(50, 217, 217, 0.08), transparent 60%),
+        radial-gradient(55vw 45vh at 20% 92%, rgba(50, 217, 217, 0.08), transparent 60%);
+    }
+
+    #veloce-lp::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    #veloce-lp main,
+    #veloce-lp nav,
+    #veloce-lp footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    #veloce-lp a {
+      color: inherit;
+    }
+
+    /* Hierarquia e Reset de Tipografia */
+    #veloce-lp h1,
+    #veloce-lp h2,
+    #veloce-lp h3,
+    #veloce-lp h4,
+    #veloce-lp h5,
+    #veloce-lp h6 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--heading);
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    #veloce-lp p {
+      text-wrap: pretty;
+    }
+
+    #veloce-lp .stage-logo-wrap {
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+      display: block;
+    }
+
+    /* Imagens Responsivas Globais */
+    #veloce-lp img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* NAV */
+    #veloce-lp nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(5, 6, 7, 0.7);
+      backdrop-filter: blur(22px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 60px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #veloce-lp .nav-progress {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: linear-gradient(90deg, var(--cyan-dim), var(--cyan));
+      box-shadow: 0 0 12px var(--cyan);
+    }
+
+    #veloce-lp .nav-logo {
+      height: 40px;
+      width: auto;
+      aspect-ratio: 317 / 106;
+      object-fit: contain;
+      display: block;
+    }
+
+    #veloce-lp .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    #veloce-lp .nav-links a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    #veloce-lp .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    #veloce-lp .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: linear-gradient(to top, var(--cyan) 0%, #6be9e9 100%);
+      color: #041312;
+      font-weight: 600;
+      padding: 18px 42px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 8px 20px rgba(50, 217, 217, 0.35), 0 16px 46px rgba(50, 217, 217, 0.4);
+      transition: filter 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      filter: brightness(1);
+    }
+
+    #veloce-lp .btn:hover {
+      filter: brightness(1.18);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(50, 217, 217, 0.45), 0 20px 56px rgba(50, 217, 217, 0.5);
+    }
+
+    #veloce-lp .btn:active {
+      filter: brightness(1);
+      transform: translateY(0);
+    }
+
+    #veloce-lp .btn-ghost {
+      background: rgba(50, 217, 217, 0.04);
+      color: var(--cyan);
+      box-shadow: inset 0 0 10px rgba(50, 217, 217, 0.05);
+      border-color: rgba(50, 217, 217, 0.4);
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    #veloce-lp .btn-ghost:hover {
+      background: var(--cyan);
+      color: #041312;
+      border-color: var(--cyan);
+      box-shadow: 0 10px 24px rgba(50, 217, 217, 0.35), 0 0 15px rgba(50, 217, 217, 0.15);
+      transform: translateY(-3px);
+    }
+
+    #veloce-lp .btn-amber {
+      background: linear-gradient(to top, var(--cyan) 0%, #6be9e9 100%);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: #041312;
+    }
+
+    #veloce-lp .btn-wide {
+      padding: 18px 42px;
+      font-size: 13px;
+    }
+
+    #veloce-lp .btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    #veloce-lp .nav .btn {
+      padding: 9px 18px;
+      font-size: 11px;
+    }
+
+    /* botão magnético (partículas atraídas no hover) */
+
+    /* HERO */
+    #veloce-lp .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 150px 24px 80px;
+    }
+
+    #veloce-lp .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(720px 480px at 50% 82%, rgba(50, 217, 217, 0.28), rgba(50, 217, 217, 0.05) 55%, transparent 70%),
+        radial-gradient(900px 640px at 50% 42%, rgba(50, 217, 217, 0.14), transparent 70%),
+        radial-gradient(150% 120% at 50% 44%, transparent 44%, rgba(0, 0, 0, 0.74) 100%);
+    }
+
+    #veloce-lp .stage {
+      position: relative;
+      z-index: 2;
+      width: min(1000px, 92vw);
+      margin: 0 auto;
+    }
+
+    #veloce-lp .stage-word {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 60px rgba(50, 217, 217, 0.14));
+      position: relative;
+      z-index: 1;
+    }
+
+    #veloce-lp .stage-car-wrapper {
+      position: absolute;
+      left: 50%;
+      top: 47%;
+      transform: translate(-50%, -50%);
+      width: 52%;
+      z-index: 3;
+      pointer-events: none;
+      animation: carEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes carEntrance {
+      0% {
+        transform: translate(120%, -50%) scale(0.85);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    #veloce-lp .stage-car {
+      position: relative;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.85));
+      transition: transform 0.1s ease-out;
+    }
+
+    #veloce-lp .hero-pitch {
+      position: relative;
+      z-index: 4;
+      margin-top: 52px;
+      max-width: 660px;
+    }
+
+    #veloce-lp .hero-sub {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: #c3cace;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* MARQUEE */
+    #veloce-lp .marquee {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 13, 15, 0.6);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 14px 0;
+    }
+
+    #veloce-lp .marquee-track {
+      display: inline-block;
+      animation: scroll-x 30s linear infinite;
+    }
+
+    #veloce-lp .marquee-track span {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: #fff;
+      margin: 0 8px;
+      opacity: 0.85;
+    }
+
+    #veloce-lp .marquee-track span i {
+      color: var(--cyan);
+      font-style: normal;
+      margin: 0 20px;
+    }
+
+    @keyframes scroll-x {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* SECTIONS */
+    #veloce-lp section {
+      padding: 110px 80px;
+      position: relative;
+    }
+
+    #veloce-lp .sec-border {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    #veloce-lp .eyebrow-urgent {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 14px;
+    }
+
+    #veloce-lp .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 52px;
+      font-size: clamp(36px, 4.6vw, 52px);
+      line-height: 54px;
+      color: var(--heading);
+      margin-bottom: 20px;
+      max-width: 20ch;
+    }
+
+    #veloce-lp .section-title em {
+      color: var(--cyan);
+      font-style: normal;
+    }
+
+    #veloce-lp .section-title em.warn {
+      color: var(--amber);
+    }
+
+    #veloce-lp .section-title em.blue {
+      color: var(--ice);
+    }
+
+    #veloce-lp .section-intro {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 54px;
+    }
+
+    #veloce-lp .section-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 60px;
+    }
+
+    #veloce-lp .section-head .section-title,
+    #veloce-lp .section-head .section-intro {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ABOUT */
+    #veloce-lp .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    #veloce-lp .about-body {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+
+    #veloce-lp .about-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    #veloce-lp .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      aspect-ratio: 470 / 490;
+    }
+
+    #veloce-lp .carousel {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    #veloce-lp .carousel-track {
+      display: flex;
+      transition: transform 0.5s var(--ease);
+    }
+
+    #veloce-lp .slide {
+      min-width: 100%;
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #12171a, #0a0c0e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #veloce-lp .slide-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+    }
+
+    #veloce-lp .carousel-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    #veloce-lp .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2c3236;
+      cursor: pointer;
+      transition: background 0.3s, width 0.3s;
+    }
+
+    #veloce-lp .dot.active {
+      background: var(--cyan);
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    /* SERVIÇOS (órbita, lado a lado) */
+    #veloce-lp #servicos {
+      overflow: hidden;
+    }
+
+    #veloce-lp .svc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    #veloce-lp .svc-title {
+      max-width: none;
+    }
+
+    #veloce-lp .svc-copy .section-intro {
+      margin-bottom: 30px;
+    }
+
+    #veloce-lp .section-intro+.pain-cta-line {
+      margin-top: -52px;
+    }
+
+    #veloce-lp .orbit-focal {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(520px circle at 74% 52%, rgba(50, 217, 217, 0.14), transparent 60%);
+    }
+
+    #veloce-lp .orbit-wrap {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    #veloce-lp .orbit {
+      position: relative;
+      width: min(500px, 100%);
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+
+    #veloce-lp .orbit-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #veloce-lp .orbit-ring.r1 {
+      width: 100%;
+      height: 100%;
+      animation: spin 60s linear infinite;
+    }
+
+    #veloce-lp .orbit-ring.r2 {
+      width: 66%;
+      height: 66%;
+      border-color: rgba(50, 217, 217, 0.14);
+      animation: spin 42s linear infinite reverse;
+    }
+
+    #veloce-lp .orbit-ring.r1::before,
+    #veloce-lp .orbit-ring.r2::before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--cyan);
+      top: -2px;
+      left: 50%;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    @keyframes spin {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    #veloce-lp .orbit-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 34%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(50, 217, 217, 0.14), rgba(5, 6, 7, 0.9) 70%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: inset 0 0 40px rgba(50, 217, 217, 0.12);
+      transition: opacity 0.3s ease;
+    }
+
+    #veloce-lp .orbit.pop-active .orbit-center {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #veloce-lp .orbit-center img {
+      width: 44%;
+      height: auto;
+      opacity: 0.95;
+    }
+
+    #veloce-lp .orbit-center span {
+      font-family: 'Space Mono', monospace;
+      font-size: 8.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      max-width: 80%;
+      line-height: 1.5;
+    }
+
+    #veloce-lp .svc-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    #veloce-lp .svc-node:nth-child(even) {
+      animation-delay: -2.5s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(-50%, -50%) translateY(0);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) translateY(-8px);
+      }
+    }
+
+    #veloce-lp .svc-bubble {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+    }
+
+    #veloce-lp .svc-bubble svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.7;
+    }
+
+    #veloce-lp .svc-node:hover .svc-bubble {
+      transform: scale(1.12);
+      border-color: var(--cyan);
+      box-shadow: 0 0 30px rgba(50, 217, 217, 0.35);
+    }
+
+    #veloce-lp .svc-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    #veloce-lp .orbit-hint {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-top: 30px;
+    }
+
+    #veloce-lp .orbit-hint b {
+      color: var(--cyan);
+      font-weight: 400;
+    }
+
+    /* popover no hover */
+    #veloce-lp .svc-pop {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.96);
+      width: 76%;
+      z-index: 6;
+      background: linear-gradient(165deg, rgba(18, 22, 25, 0.97), rgba(9, 11, 13, 0.98));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s, transform .25s;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      text-align: left;
+    }
+
+    #veloce-lp .svc-pop.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
+
+    #veloce-lp .svc-pop .pop-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(50, 217, 217, 0.1);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    #veloce-lp .svc-pop .pop-ico svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.7;
+    }
+
+    #veloce-lp .svc-pop h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    #veloce-lp .svc-pop ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #veloce-lp .svc-pop li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    #veloce-lp .svc-pop li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    /* PAIN */
+    #veloce-lp .pain-title {
+      max-width: none;
+    }
+
+    #veloce-lp .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 56px;
+      margin-top: 20px;
+    }
+
+    #veloce-lp .pain-item {
+      position: relative;
+      padding-top: 24px;
+      border-top: 1px solid rgba(50, 217, 217, 0.28);
+      transition: border-color .3s;
+    }
+
+    #veloce-lp .pain-item:hover {
+      border-color: var(--amber);
+    }
+
+    #veloce-lp .pain-idx {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--accent-text);
+      letter-spacing: 2px;
+    }
+
+    #veloce-lp .pain-item h3 {
+      font-size: 21px;
+      color: var(--heading);
+      margin: 8px 0 10px;
+      font-weight: 700;
+    }
+
+    #veloce-lp .pain-item p {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 46ch;
+    }
+
+    #veloce-lp .pain-cta {
+      text-align: center;
+      margin-top: 96px;
+    }
+
+    #veloce-lp .pain-cta-text {
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* COMPARE */
+    #veloce-lp #compare .section-head {
+      max-width: 1120px;
+    }
+
+    #veloce-lp .compare-title {
+      max-width: none;
+    }
+
+    #veloce-lp .compare-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(5, 6, 7, 0.08);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+      background: #fff;
+    }
+
+    #veloce-lp .compare {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #veloce-lp .compare thead th {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 22px 26px;
+      font-weight: 700;
+    }
+
+    #veloce-lp .compare thead th.them {
+      color: #ff6666;
+      background: rgba(220, 50, 50, 0.10);
+    }
+
+    #veloce-lp .compare thead th.us {
+      color: #041312;
+      background: var(--cyan);
+    }
+
+    #veloce-lp .compare thead th.us .u {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #veloce-lp .compare thead th.us svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    #veloce-lp .compare td {
+      padding: 18px 26px;
+      border-top: 1px solid rgba(5, 6, 7, 0.06);
+      font-size: 14px;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    #veloce-lp .compare td.them {
+      color: #5b6568;
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    #veloce-lp .compare td.us {
+      color: #0d1418;
+      background: rgba(50, 217, 217, 0.08);
+      font-weight: 500;
+    }
+
+    #veloce-lp .compare td.them::before {
+      content: '✕';
+      color: #ff5555;
+      margin-right: 12px;
+      font-weight: 700;
+    }
+
+    #veloce-lp .compare td.us::before {
+      content: '✓';
+      color: #0ea5a9;
+      margin-right: 12px;
+      font-weight: 700;
+    }
+
+    /* QUIZ (lado a lado) */
+    #veloce-lp #quiz .orbit-focal {
+      background: radial-gradient(600px circle at 72% 45%, rgba(50, 217, 217, 0.14), transparent 60%);
+    }
+
+    #veloce-lp .quiz-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    #veloce-lp .quiz-card {
+      position: relative;
+      background: linear-gradient(165deg, rgba(18, 22, 25, 0.85), rgba(8, 10, 12, 0.9));
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 44px;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      min-height: 340px;
+    }
+
+    #veloce-lp .quiz-progress {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    #veloce-lp .quiz-progress i {
+      display: block;
+      height: 100%;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: linear-gradient(90deg, var(--cyan-dim), var(--cyan));
+      transition: transform .4s var(--ease);
+    }
+
+    #veloce-lp .quiz-step {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 14px;
+    }
+
+    #veloce-lp .quiz-q {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    /* dentro do quiz-card, sempre escuro por design */
+    #veloce-lp .quiz-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    #veloce-lp .quiz-opt {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: #eaeef0;
+      font-size: 15px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .2s;
+      font-family: inherit;
+    }
+
+    /* dentro do quiz-card, sempre escuro por design */
+    #veloce-lp .quiz-opt:hover {
+      border-color: var(--cyan);
+      background: rgba(50, 217, 217, 0.06);
+      transform: translateX(4px);
+    }
+
+    #veloce-lp .quiz-intro-ico {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 46px;
+      color: var(--cyan);
+      letter-spacing: 2px;
+    }
+
+    #veloce-lp .quiz-center {
+      text-align: center;
+    }
+
+    #veloce-lp .quiz-center p {
+      color: #8b9498;
+      max-width: 460px;
+      margin: 12px auto 26px;
+    }
+
+    /* dentro do quiz-card, sempre escuro por design */
+    #veloce-lp .quiz-mini {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-top: 18px;
+    }
+
+    #veloce-lp .quiz-result-tier {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    #veloce-lp .quiz-meter {
+      position: relative;
+      height: 8px;
+      border-radius: 4px;
+      margin: 4px 0 22px;
+      background: linear-gradient(90deg, #E5484D 0%, #F5A623 35%, #32D9D9 65%, #2ECC71 100%);
+    }
+
+    #veloce-lp .quiz-meter i {
+      position: absolute;
+      top: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #050607;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+      transform: translate(-50%, -50%);
+      transition: left .5s var(--ease);
+    }
+
+    #veloce-lp .quiz-result h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: clamp(24px, 3.2vw, 38px);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* dentro do quiz-card, sempre escuro por design */
+    #veloce-lp .quiz-result p {
+      color: #8b9498;
+      margin-bottom: 24px;
+    }
+
+    /* dentro do quiz-card, sempre escuro por design */
+    #veloce-lp .quiz-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    #veloce-lp .quiz-form input {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #eaeef0;
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* dentro do quiz-card, sempre escuro por design */
+    #veloce-lp .quiz-form input:focus {
+      outline: none;
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(50, 217, 217, 0.25);
+    }
+
+    #veloce-lp .quiz-form .btn {
+      justify-content: center;
+    }
+
+    #veloce-lp .quiz-thanks {
+      text-align: center;
+    }
+
+    /* MATERIAIS */
+    #veloce-lp .mat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    /* @property para animação fluida de coordenadas no CSS */
+    @property --x {
+      syntax: '<percentage>';
+      initial-value: 0%;
+      inherits: false;
+    }
+
+    @property --y {
+      syntax: '<percentage>';
+      initial-value: 0%;
+      inherits: false;
+    }
+
+    @keyframes borderSweep {
+      0% {
+        --x: 0%;
+        --y: 0%;
+      }
+
+      25% {
+        --x: 100%;
+        --y: 0%;
+      }
+
+      50% {
+        --x: 100%;
+        --y: 100%;
+      }
+
+      75% {
+        --x: 0%;
+        --y: 100%;
+      }
+
+      100% {
+        --x: 0%;
+        --y: 0%;
+      }
+    }
+
+    /* MATERIAIS */
+    #veloce-lp .mat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    #veloce-lp .mat {
+      position: relative;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #veloce-lp .mat::before,
+    #veloce-lp .post::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: radial-gradient(160px circle at var(--x, 0%) var(--y, 0%),
+          rgba(50, 217, 217, 0.65),
+          transparent 80%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 5;
+      animation: borderSweep 8s linear infinite;
+    }
+
+    #veloce-lp .mat::after,
+    #veloce-lp .post::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(220px circle at var(--x, 0%) var(--y, 0%),
+          rgba(50, 217, 217, 0.05),
+          transparent 80%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #veloce-lp .mat:hover::before,
+    #veloce-lp .post:hover::before {
+      animation: none;
+    }
+
+    #veloce-lp .mat:hover::after,
+    #veloce-lp .post:hover::after {
+      opacity: 1;
+    }
+
+    #veloce-lp .mat:hover {
+      border-color: rgba(50, 217, 217, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(50, 217, 217, 0.15);
+    }
+
+    #veloce-lp .mat-cover {
+      aspect-ratio: 16/10;
+      background: linear-gradient(150deg, rgba(50, 217, 217, 0.18), rgba(50, 217, 217, 0.10));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #veloce-lp .mat-cover div.mat-type {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+    }
+
+    #veloce-lp .mat-type {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ice);
+      background: rgba(50, 217, 217, 0.14);
+      border: 1px solid rgba(50, 217, 217, 0.3);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    #veloce-lp .mat-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #veloce-lp .mat-body h3 {
+      font-size: 17px;
+      color: var(--heading);
+      line-height: 1.35;
+      margin-bottom: 18px;
+    }
+
+    #veloce-lp .mat-body .btn {
+      margin-top: auto;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* BLOG */
+    #veloce-lp .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    #veloce-lp .post {
+      position: relative;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #veloce-lp .post:hover {
+      border-color: rgba(50, 217, 217, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(50, 217, 217, 0.15);
+    }
+
+    #veloce-lp .post-thumb {
+      aspect-ratio: 16/10;
+      background: linear-gradient(150deg, #161b1e, #0a0c0e);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #veloce-lp .post-thumb::after {
+      content: attr(data-ghost);
+      position: absolute;
+      right: -6px;
+      bottom: -46px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 170px;
+      line-height: 1;
+      color: rgba(50, 217, 217, 0.07);
+    }
+
+    #veloce-lp .post-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(50, 217, 217, 0.1);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    #veloce-lp .post-body {
+      padding: 26px 24px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #veloce-lp .post-body h3 {
+      font-size: 18px;
+      color: var(--heading);
+      line-height: 1.32;
+      margin-bottom: 16px;
+    }
+
+    #veloce-lp .post-meta {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    #veloce-lp .post-meta a {
+      color: var(--accent-text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #veloce-lp .post-meta a svg {
+      width: 12px;
+      height: 12px;
+      transition: transform .3s;
+    }
+
+    #veloce-lp .post:hover .post-meta a svg {
+      transform: translateX(4px);
+    }
+
+    /* FAQ */
+    #veloce-lp .faq-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    #veloce-lp .faq-side .section-title {
+      margin-bottom: 16px;
+    }
+
+    #veloce-lp .faq-side p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 32ch;
+    }
+
+    #veloce-lp .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    #veloce-lp .faq-item {
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(6px);
+      overflow: hidden;
+      transition: border-color .3s, background .3s;
+    }
+
+    #veloce-lp .faq-item:hover {
+      border-color: rgba(50, 217, 217, 0.3);
+    }
+
+    #veloce-lp .faq-item.open {
+      border-color: rgba(50, 217, 217, 0.45);
+      background: rgba(50, 217, 217, 0.04);
+    }
+
+    #veloce-lp .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      text-align: left;
+      padding: 20px 24px;
+      font-size: 16px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #veloce-lp .faq-q:hover {
+      color: var(--cyan);
+    }
+
+    #veloce-lp .faq-q .plus {
+      font-size: 22px;
+      color: var(--cyan);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      line-height: 1;
+    }
+
+    #veloce-lp .faq-item.open .plus {
+      transform: rotate(45deg);
+    }
+
+    #veloce-lp .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    #veloce-lp .faq-a p {
+      padding: 0 24px 22px;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER (estilo Grupo GPV) */
+    #veloce-lp footer {
+      padding: 28px 80px;
+      border-top: 1px solid rgba(50, 217, 217, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: #E8F7F7;
+      color: #0d1418;
+      --text: #0d1418;
+      --muted: #4a5568;
+      --glass-border: rgba(10, 20, 20, 0.12);
+    }
+
+    #veloce-lp .foot-brand {
+      max-width: 340px;
+    }
+
+    #veloce-lp .footer-logo {
+      height: 70px;
+      width: auto;
+      aspect-ratio: 291 / 225;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 12px;
+      filter: brightness(0);
+    }
+
+    #veloce-lp .foot-brand p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    #veloce-lp .foot-brand .foot-contact {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    #veloce-lp .foot-brand .foot-contact a {
+      text-decoration: none;
+    }
+
+    #veloce-lp .foot-brand .foot-contact a:hover {
+      color: var(--cyan);
+    }
+
+    #veloce-lp .foot-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    #veloce-lp .foot-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      transition: color .2s, border-color .2s, transform .2s;
+    }
+
+    #veloce-lp .foot-social a svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    #veloce-lp .foot-social a:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    #veloce-lp .foot-group-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    #veloce-lp .foot-group-label b {
+      color: var(--cyan);
+      font-weight: 700;
+      display: block;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    #veloce-lp .foot-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #veloce-lp .foot-group ul a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    #veloce-lp .foot-group ul a:hover {
+      color: var(--cyan);
+    }
+
+    /* PROGRESSIVE SCROLL REVEAL SYSTEM */
+    .js-active #veloce-lp .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .js-active #veloce-lp .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efeito de Staggered Delay para grids e listas de itens revelados */
+    .js-active #veloce-lp .pain-grid .reveal:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .js-active #veloce-lp .pain-grid .reveal:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .js-active #veloce-lp .pain-grid .reveal:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .js-active #veloce-lp .pain-grid .reveal:nth-child(4) {
+      transition-delay: 0.35s;
+    }
+
+    .js-active #veloce-lp .mat-grid .reveal:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .js-active #veloce-lp .mat-grid .reveal:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .js-active #veloce-lp .mat-grid .reveal:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .js-active #veloce-lp .grid-3 .reveal:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .js-active #veloce-lp .grid-3 .reveal:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .js-active #veloce-lp .grid-3 .reveal:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .js-active #veloce-lp .depoimentos-grid .reveal:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .js-active #veloce-lp .depoimentos-grid .reveal:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .js-active #veloce-lp .depoimentos-grid .reveal:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .js-active #veloce-lp .metricas-grid .reveal:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+
+    .js-active #veloce-lp .metricas-grid .reveal:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .js-active #veloce-lp .metricas-grid .reveal:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .js-active #veloce-lp .metricas-grid .reveal:nth-child(4) {
+      transition-delay: 0.35s;
+    }
+
+    /* GATE MODAL */
+    #veloce-lp .gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    #veloce-lp .gate-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #veloce-lp .gate-card {
+      background: linear-gradient(165deg, #0f1418, #080a0c);
+      border: 1px solid rgba(50, 217, 217, 0.25);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+    }
+
+    #veloce-lp .gate-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color 0.2s;
+    }
+
+    #veloce-lp .gate-close:hover {
+      color: #fff;
+    }
+
+    #veloce-lp .gate-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(50, 217, 217, 0.1);
+      border: 1px solid rgba(50, 217, 217, 0.25);
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    #veloce-lp .gate-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    #veloce-lp .gate-sub {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    #veloce-lp .gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #veloce-lp .gate-form input {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #veloce-lp .gate-form input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(50, 217, 217, 0.25);
+    }
+
+    #veloce-lp .gate-form input::placeholder {
+      color: var(--muted);
+    }
+
+    #veloce-lp .gate-form .btn {
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    #veloce-lp .gate-thanks {
+      text-align: center;
+      display: none;
+    }
+
+    #veloce-lp .gate-thanks .gate-ico {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    #veloce-lp .gate-thanks h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    #veloce-lp .gate-thanks p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    #veloce-lp .gate-privacy {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    #veloce-lp .proto {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 400;
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid var(--border);
+      color: var(--cyan);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 6px;
+    }
+
+    @media (max-width: 900px) {
+      #veloce-lp nav {
+        padding: 0 24px;
+        height: 70px;
+      }
+
+      #veloce-lp .nav-links {
+        display: none;
+      }
+
+      #veloce-lp .nav-logo {
+        height: 32px;
+      }
+
+      #veloce-lp .hero {
+        padding: 120px 20px 60px;
+      }
+
+      #veloce-lp .stage {
+        width: 100%;
+      }
+
+      #veloce-lp .stage-car-wrapper {
+        width: 58%;
+      }
+
+      #veloce-lp section {
+        padding: 64px 22px;
+      }
+
+      #veloce-lp .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      #veloce-lp .svc-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      #veloce-lp .quiz-layout {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      #veloce-lp .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      #veloce-lp .pain-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      #veloce-lp .mat-grid,
+      #veloce-lp .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      #veloce-lp .compare td,
+      #veloce-lp .compare thead th {
+        padding: 14px 16px;
+        font-size: 13px;
+      }
+
+      #veloce-lp .quiz-card {
+        padding: 30px 22px;
+      }
+
+      #veloce-lp footer {
+        padding: 22px;
+      }
+    }
+
+    /* Badge via ::before — invisível pro script de scramble */
+    #veloce-lp [data-badge]::before {
+      content: attr(data-badge);
+      display: inline-block;
+      font-family: Space Mono, monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #32D9D9;
+      background: rgba(50, 217, 217, 0.14);
+      border: 1px solid rgba(50, 217, 217, 0.32);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* METRICAS DE IMPACTO */
+    #veloce-lp .metricas-sec {
+      padding: 110px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #veloce-lp .metricas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #veloce-lp .metrica-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px 24px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    #veloce-lp .metrica-card:hover {
+      border-color: rgba(50, 217, 217, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(50, 217, 217, 0.1);
+    }
+
+    #veloce-lp .metrica-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+      text-shadow: 0 0 20px rgba(50, 217, 217, 0.3);
+    }
+
+    #veloce-lp .metrica-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* DEPOIMENTOS E PROVA SOCIAL */
+    #veloce-lp .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    #veloce-lp .depoimento-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 36px 30px;
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    #veloce-lp .depoimento-card:hover {
+      border-color: rgba(50, 217, 217, 0.3);
+      transform: translateY(-4px);
+    }
+
+    #veloce-lp .dep-stars {
+      color: var(--cyan);
+      font-size: 16px;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    #veloce-lp .dep-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    #veloce-lp .dep-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+    }
+
+    #veloce-lp .dep-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #veloce-lp .dep-info strong {
+      color: #fff;
+      font-size: 15px;
+    }
+
+    #veloce-lp .dep-info span {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    #veloce-lp .parceiros-wrap {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 50px;
+      text-align: center;
+    }
+
+    #veloce-lp .parceiros-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    #veloce-lp .parceiros-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px 60px;
+      opacity: 0.6;
+    }
+
+    #veloce-lp .parceiros-logos span {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 900px) {
+      #veloce-lp .metricas-sec {
+        padding: 80px 22px 50px;
+      }
+
+      #veloce-lp .metricas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      #veloce-lp .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      #veloce-lp .parceiros-logos {
+        gap: 20px 30px;
+      }
+    }
+  
+    #veloce-lp section { scroll-margin-top: 80px; }
+    #veloce-lp nav > .btn { padding: 10px 18px; font-size: 11px; }
+    #veloce-lp #materiais .section-intro { white-space: normal !important; }
+    #veloce-lp .post-meta svg { width: 12px; height: 12px; }
+    #veloce-lp :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      #veloce-lp *, #veloce-lp *::before, #veloce-lp *::after { animation: none !important; transition: none !important; }
+      .js-active #veloce-lp .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="veloce-lp">
+
+    <!-- NAV -->
+    <nav>
+      <a href="#top"><img class="nav-logo"
+          src="https://static.autodromo.com.br/uploads/ab479c95-a784-4de2-ad62-b472612cc28c_veloce-wordmark-clean.webp"
+          alt="Veloce" width="317" height="106"></a>
+      <ul class="nav-links">
+        <li><a href="#sobre">A Veloce</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#dor">Diagnóstico</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#materiais">Materiais</a></li>
+        <li><a href="/velocemkt-blog">Blog</a></li>
+      </ul>
+      <a class="btn cta-wa" href="#">Agendar diagnóstico</a>
+      <div class="nav-progress" id="progress"></div>
+    </nav>
+
+    <main>
+      <!-- 1. HERO -->
+      <section class="hero" id="top">
+        <div class="hero-mesh"></div>
+        <div class="stage">
+          <h1 class="stage-logo-wrap">
+            <img class="stage-word"
+              src="https://static.autodromo.com.br/uploads/ab479c95-a784-4de2-ad62-b472612cc28c_veloce-wordmark-clean.webp"
+              alt="Veloce — Marketing e Vendas para o setor automotivo" width="3168" height="1064" fetchpriority="high">
+          </h1>
+          <!-- Foto do carro (com wrapper para entrada animada) -->
+          <div class="stage-car-wrapper">
+            <img class="stage-car"
+              src="https://static.autodromo.com.br/uploads/a18f8df0-aabf-4100-9830-031fd9d1da7d_carro.webp" alt=""
+              width="1574" height="373" fetchpriority="high">
+          </div>
+        </div>
+        <div class="hero-pitch">
+          <p class="hero-sub">Marketing e vendas para o setor automotivo. A gente junta velocidade de execução,
+            estratégia e tecnologia pra fazer o seu negócio crescer mais&nbsp;rápido.</p>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <div class="marquee">
+        <div class="marquee-track" id="marquee"></div>
+      </div>
+
+
+
+      <!-- 2. SOBRE -->
+      <section id="sobre" class="section-light">
+        <div class="about-grid">
+          <div class="reveal">
+            <h2 class="section-title">A Veloce é <em>rápida</em></h2>
+            <p class="about-body">
+              Somos uma agência de marketing digital <strong>especializada no setor automotivo</strong>: concessionária,
+              multimarcas, montadora, locadora, autopeças, qualquer negócio que vive de carro.
+            </p>
+            <a class="btn cta-wa" href="#">Quero falar com a VELOCE
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </div>
+          <div class="reveal" style="transition-delay: 0.15s;">
+            <div class="carousel">
+              <div class="carousel-track" id="carTrack">
+                <div class="slide"
+                  style="background-image:url('https://i.imgur.com/SRUxGJq.jpg');background-size:cover;background-position:center">
+                </div>
+                <div class="slide"
+                  style="background-image:url('https://i.imgur.com/DW411ev.jpg');background-size:cover;background-position:center">
+                </div>
+                <div class="slide"
+                  style="background-image:url('https://i.imgur.com/DCY5Erd.jpg');background-size:cover;background-position:center">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="carDots"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SERVIÇOS -->
+      <section id="servicos" class="sec-border">
+        <div class="orbit-focal"></div>
+        <div class="svc-layout">
+          <div class="svc-copy reveal">
+            <h2 class="section-title svc-title">A gente monta a estratégia de acordo com a sua necessidade.</h2>
+            <a class="btn cta-wa btn-wide" href="#">Quero montar minha estratégia</a>
+          </div>
+          <div class="orbit-wrap reveal" style="transition-delay: 0.15s;">
+            <div class="orbit" id="orbit">
+              <div class="orbit-ring r1"></div>
+              <div class="orbit-ring r2"></div>
+              <div class="orbit-center">
+                <img
+                  src="https://static.autodromo.com.br/uploads/30a50fb7-1e43-4681-b502-a7bd0107cb2e_veloce-simbolo-ciano.webp"
+                  alt="" width="326" height="225" loading="lazy">
+                <span>Estratégia no centro</span>
+              </div>
+              <div class="svc-pop" id="svcPop"></div>
+            </div>
+            <p class="orbit-hint">Passe o mouse pra ver · <b>7 serviços</b></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. DOR -->
+      <section id="dor" class="sec-border section-light">
+        <div class="eyebrow-urgent reveal">Pare e responda</div>
+        <h2 class="section-title pain-title reveal">Você também <em class="warn">passa por isso?</em></h2>
+        <div class="pain-grid">
+          <div class="pain-item reveal">
+            <div class="pain-idx">01</div>
+            <h3>Você não sabe o que deu certo</h3>
+            <p>Fecha o mês sem saber quantos carros o marketing trouxe. A verba foi embora e a única resposta é que o
+              alcance cresceu.</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-idx">02</div>
+            <h3>Tudo depende de você</h3>
+            <p>Cada arte e cada post trava esperando o seu ok. Em vez de aliviar a operação, o marketing virou mais um
+              peso na sua mesa.</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-idx">03</div>
+            <h3>Posta todo dia, loja vazia</h3>
+            <p>Conteúdo no automático, cheio de data comemorativa e frase de efeito. O feed enche, o pátio não.</p>
+          </div>
+          <div class="pain-item reveal">
+            <div class="pain-idx">04</div>
+            <h3>Tem medo de investir mais</h3>
+            <p>Você sabe que dá pra vender mais, mas não confia na estrutura pra escalar a verba. Enquanto trava, o
+              concorrente acelera.</p>
+          </div>
+        </div>
+        <div class="pain-cta">
+          <a class="btn btn-amber btn-wide cta-wa" href="#">Quero parar de perder vendas.</a>
+        </div>
+      </section>
+
+      <!-- METRICAS DE IMPACTO -->
+      <section id="metricas" class="metricas-sec sec-border">
+        <div class="section-head reveal">
+          <div class="eyebrow-urgent">Performance comprovada</div>
+          <h2 class="section-title">O impacto da Veloce em <em>números</em></h2>
+        </div>
+        <div class="metricas-grid">
+          <div class="metrica-card reveal">
+            <div class="metrica-num">+50k</div>
+            <div class="metrica-desc">Leads qualificados gerados no setor automotivo</div>
+          </div>
+          <div class="metrica-card reveal">
+            <div class="metrica-num">R$ 15M+</div>
+            <div class="metrica-desc">Em faturamento gerado para nossos clientes</div>
+          </div>
+          <div class="metrica-card reveal">
+            <div class="metrica-num">-40%</div>
+            <div class="metrica-desc">Redução média do Custo por Lead (CPL)</div>
+          </div>
+          <div class="metrica-card reveal">
+            <div class="metrica-num">100%</div>
+            <div class="metrica-desc">Focado no mercado e varejo de veículos</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. COMPARE -->
+      <section id="compare" class="sec-border section-light">
+        <div class="section-head reveal">
+          <h2 class="section-title compare-title">Seu marketing é amador ou <em>profissional?</em></h2>
+        </div>
+        <div class="compare-wrap reveal">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th class="them">Marketing amador</th>
+                <th class="us"><span class="u"><svg viewBox="0 0 24 24" fill="none" stroke="#041312" stroke-width="2.5">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg> Veloce</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="them">Mantém a presença digital no ar</td>
+                <td class="us">Existe pra gerar lead, visita e venda</td>
+              </tr>
+              <tr>
+                <td class="them">Entrega quando sobra tempo</td>
+                <td class="us">Executa rápido, com método e prazo</td>
+              </tr>
+              <tr>
+                <td class="them">Relatório de tráfego e engajamento</td>
+                <td class="us">Painel de funil ligado ao faturamento</td>
+              </tr>
+              <tr>
+                <td class="them">Métrica de vaidade: alcance e curtida</td>
+                <td class="us">Métrica de negócio: custo por lead, CAC e ROI</td>
+              </tr>
+              <tr>
+                <td class="them">Fórmula genérica de agência comum</td>
+                <td class="us">Estratégia de quem entende de carro</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pain-cta">
+          <a class="btn btn-amber btn-wide cta-wa" href="#">Quero melhorar o marketing</a>
+        </div>
+      </section>
+
+      <!-- PROVA SOCIAL / DEPOIMENTOS -->
+      <section id="depoimentos" class="sec-border">
+        <div class="section-head reveal">
+          <div class="eyebrow-urgent">Quem confia acelera junto</div>
+          <h2 class="section-title">Quem roda com a Veloce <em>aprova</em></h2>
+          <p class="section-intro">Veja o depoimento de donos e gerentes de lojas que transformaram a sua operação
+            comercial.</p>
+        </div>
+
+        <div class="depoimentos-grid">
+          <div class="depoimento-card reveal">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"Paramos de postar 'dias comemorativos' e focamos em anúncios reais de estoque. Em 30
+              dias, batemos o recorde de leads qualificados do semestre."</p>
+            <div class="dep-author">
+              <div class="dep-info">
+                <strong>Ricardo M.</strong>
+                <span>Diretor Geral - Portal Multimarcas</span>
+              </div>
+            </div>
+          </div>
+          <div class="depoimento-card reveal">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"O melhor é o dashboard integrado. Consigo saber de onde veio cada venda, direto no meu
+              CRM, sem planilhas confusas. Finalmente sei onde botar verba."</p>
+            <div class="dep-author">
+              <div class="dep-info">
+                <strong>Fernanda S.</strong>
+                <span>Gerente de Marketing - GP Concessionárias</span>
+              </div>
+            </div>
+          </div>
+          <div class="depoimento-card reveal">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"A velocidade de execução deles é absurda. Criativos de vídeo gravados no dia seguinte e
+              rodando na mesma semana. O pátio vive cheio de test-drive."</p>
+            <div class="dep-author">
+              <div class="dep-info">
+                <strong>Lucas T.</strong>
+                <span>Proprietário - Select Seminovos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGOS DE MARCAS PARCEIRAS (GRUPO GPV STYLE) -->
+        <div class="parceiros-wrap reveal">
+          <p class="parceiros-title">Eles confiam na nossa assessoria automotiva</p>
+          <div class="parceiros-logos">
+            <span>SELECT SEMINOVOS</span>
+            <span>GP MOTORS</span>
+            <span>PORTAL VEÍCULOS</span>
+            <span>VIP CARS</span>
+            <span>RODA MAIS</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. QUIZ -->
+      <section id="quiz" class="sec-border section-light">
+        <div class="orbit-focal"></div>
+        <div class="quiz-layout">
+          <div class="quiz-side reveal">
+            <h2 class="section-title">Descubra o que está <em class="blue">freando</em> o seu marketing</h2>
+            <p class="section-intro">Responda 7 perguntas rápidas. No fim, a gente mostra o nível do seu marketing e o
+              que atacar primeiro.</p>
+          </div>
+          <div class="quiz-card reveal" id="quizCard" style="transition-delay: 0.15s;"></div>
+        </div>
+      </section>
+
+      <!-- 7. MATERIAIS -->
+      <section id="materiais" class="sec-border">
+        <div class="section-head reveal">
+          <h2 class="section-title">Materiais <em class="blue">gratuitos</em></h2>
+          <p class="section-intro" style="max-width:none;white-space:nowrap">Baixe de graça e comece a arrumar a casa
+            hoje, mesmo antes de falar com a gente.</p>
+        </div>
+        <div class="mat-grid">
+          <div class="mat reveal">
+            <div class="mat-cover"
+              style="background-image:url('https://i.imgur.com/8cXaTg2.jpg');background-size:cover;background-position:center">
+              <div
+                style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:20px;pointer-events:none;background:linear-gradient(135deg,rgba(5,6,7,0.6),rgba(5,6,7,0.4))">
+                <div style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:2px;color:transparent"><span
+                    data-badge="E-book"></span></div>
+                <div>
+                  <div
+                    style="font-family:'Outfit',sans-serif;font-weight:700;font-size:20px;line-height:1.2;color:#fff;margin-bottom:10px">
+                    Guia do marketing<br>que vende carro</div>
+                  <div style="width:32px;height:2px;background:#32D9D9"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mat-body">
+              <h3>Guia do marketing que vende carro</h3><button class="btn btn-ghost"
+                onclick="abrirGate('E-book','Guia do marketing que vende carro','/velocemkt-guia-marketing')">Baixar
+                grátis</button>
+            </div>
+          </div>
+          <div class="mat reveal">
+            <div class="mat-cover"
+              style="background-image:url('https://i.imgur.com/MSqgLp1.jpg');background-size:cover;background-position:center">
+              <div
+                style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:20px;pointer-events:none;background:linear-gradient(135deg,rgba(5,6,7,0.6),rgba(5,6,7,0.4))">
+                <div style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:2px;color:transparent"><span
+                    data-badge="Checklist"></span></div>
+                <div>
+                  <div
+                    style="font-family:'Outfit',sans-serif;font-size:11px;color:rgba(50,217,217,0.6);line-height:2.2;margin-bottom:10px">
+                    ✓ Site ✓ Tráfego<br>✓ Leads ✓ Resultado</div>
+                  <div
+                    style="font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#fff">
+                    Sua loja está pronta<br>pra vender online?</div>
+                </div>
+              </div>
+            </div>
+            <div class="mat-body">
+              <h3>Sua loja está pronta pra vender online?</h3><button class="btn btn-ghost"
+                onclick="abrirGate('Checklist','Sua loja está pronta pra vender online?','/velocemkt-checklist-loja')">Baixar
+                grátis</button>
+            </div>
+          </div>
+          <div class="mat reveal">
+            <div class="mat-cover"
+              style="background-image:url('https://i.imgur.com/uR5kLcV.jpg');background-size:cover;background-position:center">
+              <div
+                style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:20px;pointer-events:none;background:linear-gradient(135deg,rgba(5,6,7,0.6),rgba(5,6,7,0.4))">
+                <div style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:2px;color:transparent"><span
+                    data-badge="Calculadora"></span></div>
+                <div>
+                  <div
+                    style="font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#fff">
+                    Calculadora de custo<br>por lead automotivo</div>
+                </div>
+              </div>
+            </div>
+            <div class="mat-body">
+              <h3>Calculadora de custo por lead automotivo</h3><button class="btn btn-ghost"
+                onclick="abrirGate('Calculadora','Calculadora de custo por lead automotivo','/velocemkt-calculadora-lead')">Usar
+                grátis</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. BLOG -->
+      <section id="blog" class="sec-border section-light">
+        <div class="section-head reveal">
+          <h2 class="section-title">No radar do <em>setor</em></h2>
+          <p class="section-intro">Marketing, vendas e tendências do mercado automotivo, direto ao ponto.</p>
+        </div>
+        <div class="grid-3">
+          <a class="post reveal" href="/velocemkt-como-transformar-seguidor-em-test-drive">
+            <div class="post-thumb" data-ghost="01"
+              style="background-image:url('https://i.imgur.com/SuY48xV.jpg');background-size:cover;background-position:center">
+              <span class="post-tag">Social</span>
+              <div
+                style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 65%);pointer-events:none">
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(50,217,217,0.7);text-transform:uppercase;margin-bottom:6px">
+                  Social media</div>
+                <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;color:#fff;line-height:1.25">
+                  Seguidor vira<br>test drive</div>
+              </div>
+            </div>
+            <div class="post-body">
+              <h3>Como transformar seguidor de rede social em test drive</h3>
+              <div class="post-meta"><span>Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg></span><span>8 min</span></div>
+            </div>
+          </a>
+          <a class="post reveal" href="/velocemkt-trafego-pago-no-automotivo-onde-a-verba-costuma-vazar">
+            <div class="post-thumb" data-ghost="02"
+              style="background-image:url('https://i.imgur.com/wMblkV7.jpg');background-size:cover;background-position:center">
+              <span class="post-tag">Tráfego</span>
+              <div
+                style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 65%);pointer-events:none">
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(50,217,217,0.7);text-transform:uppercase;margin-bottom:6px">
+                  Tráfego pago</div>
+                <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;color:#fff;line-height:1.25">
+                  Onde a verba<br>costuma vazar</div>
+              </div>
+            </div>
+            <div class="post-body">
+              <h3>Tráfego pago no automotivo: onde a verba costuma vazar</h3>
+              <div class="post-meta"><span>Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg></span><span>9 min</span></div>
+            </div>
+          </a>
+          <a class="post reveal" href="/velocemkt-o-que-muda-no-marketing-com-o-avanco-do-carro-eletrico">
+            <div class="post-thumb" data-ghost="03"
+              style="background-image:url('https://i.imgur.com/L0wpEiK.jpg');background-size:cover;background-position:center">
+              <span class="post-tag">Tendências</span>
+              <div
+                style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 65%);pointer-events:none">
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(50,217,217,0.7);text-transform:uppercase;margin-bottom:6px">
+                  Tendências</div>
+                <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;color:#fff;line-height:1.25">
+                  O que muda com<br>o carro elétrico</div>
+              </div>
+            </div>
+            <div class="post-body">
+              <h3>O que muda no marketing com o avanço do carro elétrico</h3>
+              <div class="post-meta"><span>Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg></span><span>9 min</span></div>
+            </div>
+          </a>
+        </div>
+        <div style="text-align:center;margin-top:40px;"><a href="/velocemkt-blog"
+            style="font-family:'Space Mono',monospace;font-size:12px;color:#0d1418;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(13,20,24,0.3);padding:10px 24px;border-radius:4px;transition:border-color 0.2s;">Ver
+            todos os artigos →</a></div>
+      </section>
+
+
+
+      <!-- 9. FAQ -->
+      <section id="faq" class="sec-border">
+        <div class="faq-layout">
+          <div class="faq-side reveal">
+            <h2 class="section-title">Perguntas <em>frequentes</em></h2>
+            <p>Não achou o que procurava? Fala direto com a gente, a resposta vem no mesmo dia útil.</p>
+            <a class="btn btn-ghost cta-wa" href="#">Fazer diagnóstico gratuito</a>
+          </div>
+          <div class="faq-list reveal" style="transition-delay: 0.15s;">
+            <div class="faq-item"><button class="faq-q">A Veloce atende só concessionária?<span
+                  class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Não. Atendemos todo o setor automotivo: concessionária, multimarcas, montadora, locadora, autopeça e
+                  serviços. O foco é o mercado de carro como um todo.</p>
+              </div>
+            </div>
+            <div class="faq-item"><button class="faq-q">Como funciona o diagnóstico?<span class="plus">+</span></button>
+              <div class="faq-a">
+                <p>A gente analisa o seu marketing atual e mostra onde está perdendo venda. É gratuito e sem
+                  compromisso. No fim você recebe um resumo do que dá pra melhorar.</p>
+              </div>
+            </div>
+            <div class="faq-item"><button class="faq-q">Por que vocês falam tanto em velocidade?<span
+                  class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Velocidade é o nosso jeito de trabalhar. A gente executa com método e prazo definido. A pressa nunca
+                  vira desculpa pra entregar mal.</p>
+              </div>
+            </div>
+            <div class="faq-item"><button class="faq-q">Dá pra contratar só um serviço?<span
+                  class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Dá. Você pode fazer a operação completa ou só o que a sua empresa precisa de reforço, tipo tráfego,
+                  vídeo ou social.</p>
+              </div>
+            </div>
+            <div class="faq-item"><button class="faq-q">Vocês trabalham com contrato?<span
+                  class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Sim. O formato e o prazo são definidos no começo, de acordo com o que a sua operação precisa.</p>
+              </div>
+            </div>
+            <div class="faq-item"><button class="faq-q">Em quanto tempo aparece resultado?<span
+                  class="plus">+</span></button>
+              <div class="faq-a">
+                <p>Depende do ponto de partida. No diagnóstico a gente já aponta o que rende rápido e o que é trabalho
+                  de médio prazo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="foot-brand">
+        <img class="footer-logo"
+          src="https://static.autodromo.com.br/uploads/949b4238-ec83-475b-8b14-72327819b8da_veloce-combinado.webp"
+          alt="Veloce" width="291" height="225" loading="lazy">
+        <p>Marketing e vendas pro setor automotivo. Velocidade, estratégia e resultado.</p>
+        <div class="foot-social">
+          <a href="https://instagram.com/velocemkt" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/grupogpv/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7 0H11.3v2.2h.05c.5-.95 1.9-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V24h-4V8z" />
+            </svg>
+          </a>
+        </div>
+        <div class="foot-contact"><a class="cta-wa" href="#">Fazer diagnóstico gratuito</a> · <a
+            href="mailto:contato@velocemkt.com.br">contato@velocemkt.com.br</a></div>
+      </div>
+      <div class="foot-group">
+        <div class="foot-group-label">Uma marca do <b>Grupo GPV</b></div>
+        <ul>
+          <li><a href="#">Grand Prix de Vendas</a></li>
+          <li><a href="#">Edney Ulisses</a></li>
+          <li><a href="#">Veloce</a></li>
+          <li><a href="#">Projeto Conquista</a></li>
+        </ul>
+      </div>
+    </footer>
+
+
+    <!-- GATE MODAL -->
+    <div class="gate-overlay" id="gateOverlay">
+      <div class="gate-card">
+        <button class="gate-close" onclick="fecharGate()">×</button>
+        <div id="gateForm">
+          <div class="gate-tag" id="gateTag">E-book</div>
+          <h3 class="gate-title" id="gateTitle">Guia do marketing que vende carro</h3>
+          <p class="gate-sub">Preencha abaixo e o material abre na hora.</p>
+          <form class="gate-form" id="gateFormEl">
+            <input type="text" name="nome" placeholder="Seu nome" required>
+            <input type="email" name="email" placeholder="Seu e-mail" required>
+            <input type="tel" name="whatsapp" placeholder="WhatsApp (com DDD)" required>
+            <input type="hidden" name="material" id="gateMaterial">
+            <input type="hidden" name="_subject" id="gateSubject">
+            <button type="submit" class="btn">Acessar material →</button>
+          </form>
+          <p class="gate-privacy">Seus dados estão protegidos pela LGPD. Sem spam.</p>
+        </div>
+        <div class="gate-thanks" id="gateThanks">
+          <div class="gate-ico">✓</div>
+          <h4>Abrindo agora</h4>
+          <p>O material abriu em uma nova aba.<br>A gente pode te ajudar a colocar isso em prática.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- #veloce-lp -->
+
+  <script>
+    function applyPhoneMask(input) {
+      if (!input) return;
+      input.addEventListener('input', (e) => {
+        let value = e.target.value;
+        let digits = value.replace(/\D/g, '');
+        if (digits.length > 11) digits = digits.slice(0, 11);
+        
+        let formatted = '';
+        if (digits.length > 0) {
+          formatted = '(' + digits.slice(0, 2);
+          if (digits.length > 2) {
+            formatted += ') ';
+            if (digits.length > 6) {
+              if (digits.length === 11) {
+                formatted += digits.slice(2, 7) + '-' + digits.slice(7);
+              } else {
+                formatted += digits.slice(2, 6) + '-' + digits.slice(6);
+              }
+            } else {
+              formatted += digits.slice(2);
+            }
+          }
+        }
+        e.target.value = formatted;
+      });
+    }
+
+    // Apply phone mask to gate input when loaded
+    applyPhoneMask(document.querySelector('#gateFormEl input[name="whatsapp"]'));
+
+    // GATE MODAL
+    let gateUrl = '';
+    async function abrirGate(tag, titulo, url) {
+      try {
+        const available = await fetch(url, { method: 'HEAD' });
+        if (!available.ok) { alert('Este material está em preparação. Faça o diagnóstico gratuito enquanto isso.'); return; }
+      } catch { alert('Não foi possível abrir o material. Tente novamente.'); return; }
+      gateUrl = url;
+      document.getElementById('gateTag').textContent = tag;
+      document.getElementById('gateTitle').textContent = titulo;
+      document.getElementById('gateMaterial').value = titulo;
+      document.getElementById('gateSubject').value = 'Veloce — Lead material: ' + titulo;
+      document.getElementById('gateForm').style.display = '';
+      document.getElementById('gateThanks').style.display = 'none';
+      document.getElementById('gateOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function fecharGate() {
+      document.getElementById('gateOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        document.getElementById('gateFormEl').reset();
+        document.getElementById('gateForm').style.display = '';
+        document.getElementById('gateThanks').style.display = 'none';
+      }, 300);
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharGate(); });
+    document.getElementById('gateOverlay').addEventListener('click', function (e) {
+      if (e.target === this) fecharGate();
+    });
+    document.getElementById('gateFormEl').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      
+      const telInput = this.querySelector('input[name="whatsapp"]');
+      const emailInput = this.querySelector('input[name="email"]');
+      
+      // Validation
+      const telVal = telInput.value.replace(/\D/g, '');
+      if (telVal.length < 10 || telVal.length > 11) {
+        alert('Por favor, insira um número de WhatsApp válido com DDD (10 ou 11 dígitos).');
+        telInput.focus();
+        return;
+      }
+      
+      const emailVal = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailVal)) {
+        alert('Por favor, insira um e-mail válido.');
+        emailInput.focus();
+        return;
+      }
+      
+      const btn = this.querySelector('[type=submit]');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const response = await fetch('https://hook.gridlabs.digital/webhook/9914f701-f53e-4e2e-9efa-422a1681e3a7', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        if (!response.ok) throw new Error('Não foi possível enviar. Tente novamente.');
+      } catch (err) {
+        console.error('Error sending to webhook:', err);
+        alert('Não foi possível enviar seus dados. Tente novamente.');
+        btn.textContent = 'Acessar material →';
+        btn.disabled = false;
+        return;
+      }
+      window.open(gateUrl, '_blank');
+      document.getElementById('gateForm').style.display = 'none';
+      document.getElementById('gateThanks').style.display = 'block';
+      setTimeout(fecharGate, 500);
+    });
+
+    document.querySelectorAll('.cta-wa').forEach(a => {
+      a.href = "#quiz";
+      a.removeAttribute('target');
+      a.removeAttribute('rel');
+    });
+
+    (function () {
+      const items = ["Velocidade", "Tráfego pago", "Social media", "Vídeo", "Sites", "SEO", "Eventos", "Mídia offline", "Consultoria"];
+      const build = () => items.map(t => `<span>${t}<i>/</i></span>`).join('');
+      document.getElementById('marquee').innerHTML = build() + build();
+    })();
+
+    const ICONS = {
+      social: '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+      trafego: '<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>',
+      video: '<svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M22 8l-6 4 6 4z"/></svg>',
+      site: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>',
+      seo: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>',
+      evento: '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3 2 22l10.7-3.8M4 14h6.5M9 10l1.2 1.2M10 8h.01M11 18v.01M12 2h.01M15 11h.01M15 6h.01M17 15h.01M18 2h.01M19 11h.01M20 7h.01M22 3h.01M22 15h.01"/></svg>',
+      offline: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.25a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>'
+    };
+
+    const SERVICES = [
+      { key: 'social', name: 'Social media', tasks: ['Planejamento de conteúdo', 'Posts que vendem, não só encantam', 'Community management ativo', 'Análise de métricas', 'Relacionamento com o público'] },
+      { key: 'trafego', name: 'Tráfego pago', tasks: ['Google, Meta, TikTok e LinkedIn', 'Otimização contínua por ROI', 'Segmentação de público', 'Leads automotivos qualificados', 'Relatórios em tempo real'] },
+      { key: 'video', name: 'Vídeo', tasks: ['Roteiro criativo', 'Produção profissional', 'Edição e finalização', 'Conteúdo pra rede, campanha e evento'] },
+      { key: 'site', name: 'Criação de sites', tasks: ['Site responsivo e rápido', 'Foco em conversão', 'Integração com CRM', 'Performance e SEO', 'Manutenção contínua'] },
+      { key: 'seo', name: 'SEO', tasks: ['Otimização técnica do site', 'Palavras-chave estratégicas', 'Conteúdo otimizado', 'Link building e autoridade', 'Tráfego orgânico consistente'] },
+      { key: 'evento', name: 'Eventos', tasks: ['Lançamentos e feirões', 'Test drive e experiências', 'Conteúdo em tempo real', 'Mensuração de ROI do evento'] },
+      { key: 'offline', name: 'Mídia offline', tasks: ['Outdoor, painel e busdoor', 'Rádio e TV local', 'Ação e feirão no ponto físico', 'Impressos e material de loja', 'Alinhado à mesma estratégia digital'] }
+    ];
+    (function () {
+      const orbit = document.getElementById('orbit');
+      const pop = document.getElementById('svcPop');
+      let popTimer;
+      function showPop(s) {
+        clearTimeout(popTimer);
+        pop.innerHTML = `<div class="pop-ico">${ICONS[s.key]}</div><h4>${s.name}</h4><ul>${s.tasks.map(t => `<li>${t}</li>`).join('')}</ul>`;
+        pop.classList.add('show');
+        orbit.classList.add('pop-active');
+      }
+      function hidePop() {
+        popTimer = setTimeout(() => {
+          pop.classList.remove('show');
+          orbit.classList.remove('pop-active');
+        }, 180);
+      }
+      const R = 46;
+      SERVICES.forEach((s, i) => {
+        const ang = (i / SERVICES.length) * Math.PI * 2 - Math.PI / 2;
+        const x = 50 + R * Math.cos(ang), y = 50 + R * Math.sin(ang);
+        const b = document.createElement('button');
+        b.className = 'svc-node';
+        b.style.left = x + '%'; b.style.top = y + '%';
+        b.innerHTML = `<span class="svc-bubble">${ICONS[s.key]}</span><span class="svc-name">${s.name}</span>`;
+        b.addEventListener('mouseenter', () => showPop(s));
+        b.addEventListener('mouseleave', hidePop);
+        b.addEventListener('click', () => showPop(s));
+        orbit.appendChild(b);
+      });
+      pop.addEventListener('mouseenter', () => {
+        clearTimeout(popTimer);
+        orbit.classList.add('pop-active');
+      });
+      pop.addEventListener('mouseleave', hidePop);
+    })();
+
+    (function () {
+      const track = document.getElementById('carTrack'), dotsWrap = document.getElementById('carDots'), n = track.children.length; let idx = 0;
+      for (let i = 0; i < n; i++) { const d = document.createElement('div'); d.className = 'dot' + (i === 0 ? ' active' : ''); d.onclick = () => go(i); dotsWrap.appendChild(d); }
+      function go(i) { idx = i; track.style.transform = `translateX(-${i * 100}%)`;[...dotsWrap.children].forEach((d, j) => d.classList.toggle('active', j === i)); }
+      setInterval(() => go((idx + 1) % n), 4500);
+    })();
+
+    document.querySelectorAll('.faq-q').forEach((btn, index) => {
+      const item = btn.parentElement, a = item.querySelector('.faq-a');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', `faq-a-${index}`);
+      a.setAttribute('id', `faq-a-${index}`);
+      a.setAttribute('role', 'region');
+
+      btn.addEventListener('click', () => {
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o => {
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+          o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!open) {
+          item.classList.add('open');
+          a.style.maxHeight = a.scrollHeight + "px";
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    const QUIZ = [
+      { q: 'Você sabe quantas vendas o seu marketing gerou no último mês?', o: [['Sei o número exato', 2], ['Tenho uma ideia por cima', 1], ['Não faço ideia', 0]] },
+      { q: 'Como está a sua verba de tráfego pago hoje?', o: [['Otimizada, com ROI claro', 2], ['Rodando sem acompanhar de perto', 1], ['Não invisto em tráfego', 0]] },
+      { q: 'Com que frequência sai conteúdo nas suas redes?', o: [['Planejado e constante', 2], ['Quando dá tempo', 1], ['Quase não posto', 0]] },
+      { q: 'Você tem um site que gera lead?', o: [['Sim, e ele converte', 2], ['Tenho, mas não converte', 1], ['Não tenho site', 0]] },
+      { q: 'Quem cuida do seu marketing hoje?', o: [['Agência especializada', 2], ['Equipe interna genérica', 1], ['Eu mesmo, nas horas vagas', 0]] },
+      { q: 'Você acompanha métrica de negócio (custo por lead, CAC)?', o: [['Sim, de perto', 2], ['Só alcance e curtida', 1], ['Não acompanho', 0]] },
+      { q: 'O quão rápido você precisa de resultado?', o: [['Pra ontem', 2], ['Nos próximos meses', 1], ['Sem pressa', 0]] }
+    ];
+    const TIERS = [
+      { min: 0, color: '#8b9498', label: 'Precisa de atenção', title: 'Seu marketing está no escuro', text: 'Tem muita venda ficando na mesa. A boa notícia: é onde mais dá pra crescer rápido. Recebe o diagnóstico completo e vamos destravar isso.' },
+      { min: 6, color: 'var(--cyan-dim)', label: 'Zona de atenção', title: 'Tem base, falta método', text: 'Você já faz algumas coisas certas, mas está deixando oportunidade passar por falta de estratégia e leitura de número. Dá pra apertar.' },
+      { min: 11, color: 'var(--cyan)', label: 'No caminho certo', title: 'Seu marketing está afiado', text: 'Boa parte já está redonda. O próximo passo é escalar com quem entende do setor e não deixar o concorrente encostar.' }
+    ];
+    (function () {
+      const card = document.getElementById('quizCard');
+      let step = -1, score = 0;
+      render();
+      function render() {
+        if (step === -1) { intro(); return; }
+        if (step < QUIZ.length) { question(); return; }
+        result();
+      }
+      function intro() {
+        card.innerHTML = `<div class="quiz-center">
+        <div class="quiz-intro-ico">7 PERGUNTAS</div>
+        <p>Rápido e sem cadastro pra começar. No fim você descobre o nível do seu marketing e por onde atacar.</p>
+        <button class="btn" id="qStart">Começar o diagnóstico</button>
+        <div class="quiz-mini">Diagnóstico gratuito · leva 2 minutos</div>
+      </div>`;
+        document.getElementById('qStart').onclick = () => { step = 0; score = 0; render(); };
+      }
+      function question() {
+        const Q = QUIZ[step];
+        card.innerHTML = `
+        <div class="quiz-progress"><i style="transform:scaleX(${step / QUIZ.length})"></i></div>
+        <div class="quiz-step">Pergunta ${step + 1} de ${QUIZ.length}</div>
+        <div class="quiz-q">${Q.q}</div>
+        <div class="quiz-opts">${Q.o.map((op) => `<button class="quiz-opt" data-v="${op[1]}">${op[0]}</button>`).join('')}</div>`;
+        card.querySelectorAll('.quiz-opt').forEach(b => b.onclick = () => { score += parseInt(b.dataset.v); step++; render(); });
+      }
+      function result() {
+        let t = TIERS[0]; TIERS.forEach(x => { if (score >= x.min) t = x; });
+        card.innerHTML = `
+        <div class="quiz-progress"><i style="transform:scaleX(1)"></i></div>
+        <div class="quiz-result">
+          <div class="quiz-result-tier" style="color:${t.color}">${t.label} · ${score}/14</div>
+          <div class="quiz-meter"><i style="left:${(score / 14) * 100}%"></i></div>
+          <h3>${t.title}</h3>
+          <p>${t.text}</p>
+          <form class="quiz-form" id="qForm">
+            <input type="text" name="nome" placeholder="Seu nome" required>
+            <input type="tel" name="whatsapp" placeholder="Seu WhatsApp (com DDD)" required>
+            <input type="email" name="email" placeholder="Seu melhor email" required>
+            <input type="hidden" name="resultado" value="${t.label} · ${score}/14">
+            <input type="hidden" name="diagnostico" value="${t.title}">
+            <button class="btn" type="submit">Receber o diagnóstico completo</button>
+          </form>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.5px;line-height:1.4;margin-top:12px;">Seus dados estão seguros e protegidos pela LGPD. Não enviamos spam. Usaremos suas informações apenas para enviar o seu diagnóstico completo.</div>
+        </div>`;
+        const form = document.getElementById('qForm');
+        const telInput = form.querySelector('input[name="whatsapp"]');
+        const emailInput = form.querySelector('input[name="email"]');
+        applyPhoneMask(telInput);
+
+        document.getElementById('qForm').onsubmit = async (e) => {
+          e.preventDefault();
+          
+          // Validation
+          const telVal = telInput.value.replace(/\D/g, '');
+          if (telVal.length < 10 || telVal.length > 11) {
+            alert('Por favor, insira um número de WhatsApp válido com DDD (10 ou 11 dígitos).');
+            telInput.focus();
+            return;
+          }
+          
+          const emailVal = emailInput.value.trim();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(emailVal)) {
+            alert('Por favor, insira um e-mail válido.');
+            emailInput.focus();
+            return;
+          }
+          
+          const formData = new FormData(e.target);
+          const data = Object.fromEntries(formData.entries());
+          try {
+            const response = await fetch('https://hook.gridlabs.digital/webhook/9914f701-f53e-4e2e-9efa-422a1681e3a7', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+            if (!response.ok) throw new Error('Não foi possível enviar. Tente novamente.');
+          } catch (err) {
+            console.error('Error sending quiz to webhook:', err);
+            alert('Não foi possível enviar suas respostas. Tente novamente.');
+            return;
+          }
+          card.innerHTML = `<div class="quiz-thanks">
+          <div class="quiz-intro-ico" style="color:${t.color}">RECEBIDO</div>
+          <p style="color:var(--muted);max-width:440px;margin:12px auto 26px;">Recebemos suas respostas! Nosso time da Veloce vai te chamar no WhatsApp com o diagnóstico completo.</p>
+          <a class="btn" href="https://wa.me/5511992521791?text=Oi!%20Acabei%20de%20fazer%20o%20quiz%20de%20diagn%C3%B3stico%20no%20site.%20Quero%20adiantar%20o%20meu%20resultado!" target="_blank" rel="noopener">Quero adiantar, falar agora</a>
+        </div>`;
+        };
+      }
+    })();
+
+    const io = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const heroCar = document.querySelector('.stage-car');
+    const heroEl = document.querySelector('.hero');
+    function heroDrive() {
+      if (!heroCar || !heroEl) return;
+      const p = Math.min(1, Math.max(0, window.scrollY / (heroEl.offsetHeight * 1.5)));
+      const shift = Math.pow(p, 1.5) * (window.innerWidth * 1.5);
+      const rot = Math.pow(p, 1.2) * -8;
+      heroCar.style.transform = `translate(${shift}px, 0) rotate(${rot.toFixed(2)}deg)`;
+      heroCar.style.opacity = (1 - p * 0.7).toFixed(2);
+    }
+    const prog = document.getElementById('progress');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          prog.style.transform = "scaleX(" + (s / h) + ")"; heroDrive(); ticking = false;
+        }); ticking = true;
+      }
+    }, { passive: true });
+    // Efeito interativo 3D e Glow nas cartas
+    (function () {
+      document.querySelectorAll('.mat, .post').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--x', `${x}px`);
+          card.style.setProperty('--y', `${y}px`);
+
+          const xc = rect.width / 2;
+          const yc = rect.height / 2;
+          const rotateY = ((x - xc) / xc) * 6; // Max 6 graus de inclinação
+          const rotateX = ((yc - y) / yc) * 6;
+
+          card.style.transform = `perspective(1000px) translateY(-6px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg)';
+          card.style.removeProperty('--x');
+          card.style.removeProperty('--y');
+        });
+      });
+    })();
+
+    heroDrive();
+  </script>
+</body>
+
+</html>
