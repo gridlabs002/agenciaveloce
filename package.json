@@ -1,1 +1,14 @@
-{"name":"agenciaveloce","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node server.mjs"},"engines":{"node":">=22"}}
+{
+  "name": "agenciaveloce",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node scripts/build-blog.mjs",
+    "test": "node --test tests/blog.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
